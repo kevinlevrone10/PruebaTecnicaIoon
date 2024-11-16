@@ -52,5 +52,12 @@ namespace PruebaTecnicaIoon.Repositorio
             var activeState = await _context.States.FirstOrDefaultAsync(s => s.StateName == "Active");
             return activeState?.StateId ?? Guid.Empty;
         }
+
+        public async Task<IEnumerable<User>> GetUsersByCommerceAsync(Guid commerceId)
+        {
+            return await _context.Users
+                                 .Where(u => u.CommerceId == commerceId)
+                                 .ToListAsync();
+        }
     }
 }

@@ -10,5 +10,6 @@ namespace PruebaTecnicaIoon.Repositorio.IRepositorio
         Task<User> GetByUsernameAsync(string username);
         Task<User> GetOwnerByCommerceIdAsync(Guid commerceId);
         Task<Guid> GetActiveStateIdAsync();
+        Task<IEnumerable<User>> GetUsersByCommerceAsync(Guid commerceId);
     }
 }

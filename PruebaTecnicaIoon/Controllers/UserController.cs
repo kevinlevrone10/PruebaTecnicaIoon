@@ -58,5 +58,19 @@ namespace PruebaTecnicaIoon.Controllers
                 return NotFound();
             return Ok(user);
         }
+
+        [HttpGet("commerce/{commerceId}/users")]
+        public async Task<IActionResult> GetUsersByCommerce(Guid commerceId)
+        {
+            var users = await _userRepository.GetUsersByCommerceAsync(commerceId);
+            if (users == null || !users.Any())
+            {
+                return NotFound("No usuarios pa este comercio");
+            }
+
+            return Ok(users);
+        }
+
+
     }
 }
